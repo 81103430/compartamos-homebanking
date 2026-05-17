@@ -34,8 +34,6 @@ export default function DashboardPage() {
 
   return (
     <div style={{ minHeight: '100vh', background: '#f5f6fa' }}>
-      
-      {/* Navbar */}
       <nav style={{
         background: '#E30613', padding: '1rem 2rem',
         display: 'flex', justifyContent: 'space-between', alignItems: 'center', color: 'white'
@@ -49,15 +47,12 @@ export default function DashboardPage() {
           <button onClick={handleLogout} style={{
             background: 'transparent', border: '1px solid white', color: 'white',
             padding: '0.4rem 1rem', borderRadius: 6, cursor: 'pointer', fontWeight: 600
-          }}>
-            Cerrar sesión
-          </button>
+          }}>Cerrar sesión</button>
         </div>
       </nav>
 
       <div style={{ padding: '2rem', maxWidth: 960, margin: '0 auto' }}>
 
-        {/* Saludo personalizado */}
         <div style={{
           background: 'white', borderRadius: 12, padding: '1.5rem 2rem',
           marginBottom: '1.5rem', boxShadow: '0 2px 10px rgba(0,0,0,0.07)',
@@ -71,13 +66,12 @@ export default function DashboardPage() {
                 ¡Bienvenida, {perfil?.nombre || sesion?.usuario?.email}! 👋
               </h2>
               <p style={{ color: '#636e72', margin: '0.3rem 0 0', fontSize: '0.9rem' }}>
-                DNI: {perfil?.dni || '—'} &nbsp;|&nbsp; Tel: {perfil?.telefono || '—'}
+                DNI: {perfil?.dni || '—'} &nbsp;|&nbsp; Teléfono: {perfil?.telefono || '—'}
               </p>
             </>
           )}
         </div>
 
-        {/* Tarjetas */}
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
@@ -119,7 +113,6 @@ export default function DashboardPage() {
           ))}
         </div>
 
-        {/* Módulos próximos */}
         <div style={{
           background: 'white', borderRadius: 10, padding: '1.5rem',
           boxShadow: '0 2px 10px rgba(0,0,0,0.07)'
@@ -127,17 +120,20 @@ export default function DashboardPage() {
           <h3 style={{ color: '#333', marginBottom: '1rem' }}>Mis servicios</h3>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '1rem' }}>
             {[
-              { nombre: 'Ahorros', icono: '🏦' },
-              { nombre: 'Créditos', icono: '📋' },
-              { nombre: 'Transferencias', icono: '💸' },
-              { nombre: 'Pagos', icono: '💳' },
-              { nombre: 'Mi Perfil', icono: '👤' },
-            ].map((s) => (
-              <div key={s.nombre} style={{
-                background: '#f9f9f9', borderRadius: 8, padding: '1rem',
-                textAlign: 'center', cursor: 'pointer', border: '1px solid #eee',
-                transition: 'all 0.2s'
-              }}
+              { nombre: 'Ahorros', icono: '🏦', ruta: '/ahorros' },
+              { nombre: 'Créditos', icono: '📋', ruta: '/creditos' },
+              { nombre: 'Transferencias', icono: '💸', ruta: '/transferencias' },
+              { nombre: 'Pagos', icono: '💳', ruta: '/pagos' },
+              { nombre: 'Mi Perfil', icono: '👤', ruta: '/perfil' },
+              { nombre: 'Solicitar Crédito', icono: '📝', ruta: '/solicitud-credito' },
+              { nombre: 'Comité', icono: '👥', ruta: '/bandeja' },
+            ].map((s) => (  
+              <div key={s.nombre}
+                onClick={() => navigate(s.ruta)}
+                style={{
+                  background: '#f9f9f9', borderRadius: 8, padding: '1rem',
+                  textAlign: 'center', cursor: 'pointer', border: '1px solid #eee'
+                }}
                 onMouseOver={e => e.currentTarget.style.borderColor = '#E30613'}
                 onMouseOut={e => e.currentTarget.style.borderColor = '#eee'}
               >

@@ -11,8 +11,11 @@ app.use(cors({
 app.use(express.json());
 
 app.use('/api/auth', require('./routes/auth'));
-
 app.use('/api/usuario', require('./routes/usuario'));
+app.use('/api/ahorros', require('./routes/ahorros'));
+app.use('/api/creditos', require('./routes/creditos'));
+app.use('/api/transferencias', require('./routes/transferencias'));
+app.use('/api/solicitudes', require('./routes/solicitudes'));
 
 app.get('/', (req, res) => res.json({ mensaje: 'Backend Compartamos OK' }));
 
